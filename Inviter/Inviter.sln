@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{529CA150
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inviter.Application", "Inviter.Application\Inviter.Application.csproj", "{AF54FABC-BC88-4797-9055-FEB6D5BD3D2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inviter.API", "Inviter.API\Inviter.API.csproj", "{5C62F6B4-0ECB-49A0-BE77-FC9D0FFD1BE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{AF54FABC-BC88-4797-9055-FEB6D5BD3D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF54FABC-BC88-4797-9055-FEB6D5BD3D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF54FABC-BC88-4797-9055-FEB6D5BD3D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C62F6B4-0ECB-49A0-BE77-FC9D0FFD1BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C62F6B4-0ECB-49A0-BE77-FC9D0FFD1BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C62F6B4-0ECB-49A0-BE77-FC9D0FFD1BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C62F6B4-0ECB-49A0-BE77-FC9D0FFD1BE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{8D9A0752-54F0-4E3F-B3E9-FA0A8C609318} = {F1CF1E33-1768-4D2C-9FA2-819481AAC592}
 		{06348DE5-915B-4995-B892-5B38A689EC84} = {F1CF1E33-1768-4D2C-9FA2-819481AAC592}
 		{AF54FABC-BC88-4797-9055-FEB6D5BD3D2A} = {F1CF1E33-1768-4D2C-9FA2-819481AAC592}
+		{5C62F6B4-0ECB-49A0-BE77-FC9D0FFD1BE0} = {F1CF1E33-1768-4D2C-9FA2-819481AAC592}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00EB59E2-7A59-45DA-A481-01CCA15159DC}
