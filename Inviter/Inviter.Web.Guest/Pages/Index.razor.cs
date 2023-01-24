@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Inviter.Application.IServices;
+using Inviter.Domain.Models;
+using Microsoft.AspNetCore.Components;
 
 namespace Inviter.Web.Guest.Pages
 {
@@ -8,9 +10,12 @@ namespace Inviter.Web.Guest.Pages
         [Parameter]
         public Guid Code { get; set; }
 
-        //protected override void OnInitialized()
-        //{
-        //    Text ??= "fantastic";
-        //}
+        [Inject]
+        IInvitationService _invitationService { get; set; }
+
+        public Invitation Invitation { get; set; }
+
+        protected override async Task OnInitializedAsync() => Invitation = await _invitationService.Find(Code);
+
     }
 }

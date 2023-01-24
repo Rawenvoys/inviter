@@ -1,6 +1,6 @@
-﻿<PageTitle>Pobieramy się!</PageTitle>
+﻿@using Inviter.Web.Guest.Components;
+<PageTitle>Pobieramy się!</PageTitle>
 
-<div>
-    
-    @*<img src="images/toppng.com-wedding-rings-8000x5305.png" style="width: 25%"/>*@
+<div style="width:50%; height: 50%" >
+    <InvitationCardComponent Invitation=@Invitation></InvitationCardComponent>
 </div>
