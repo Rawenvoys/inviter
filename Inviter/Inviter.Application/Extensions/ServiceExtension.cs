@@ -1,4 +1,4 @@
-﻿using Inviter.Application.IServices;
+﻿using Inviter.Application.Interfaces.IServices;
 using Inviter.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 

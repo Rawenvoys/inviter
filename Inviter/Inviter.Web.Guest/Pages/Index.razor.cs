@@ -1,4 +1,4 @@
-﻿using Inviter.Application.IServices;
+﻿using Inviter.Application.Interfaces.IServices;
 using Inviter.Domain.Models;
 using Microsoft.AspNetCore.Components;
 

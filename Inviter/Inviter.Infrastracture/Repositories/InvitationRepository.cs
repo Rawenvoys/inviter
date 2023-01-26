@@ -1,6 +1,6 @@
 ﻿using Inviter.Domain.DbModels;
 using Inviter.Domain.Enums;
-using Inviter.Domain.IRepositories;
+using Inviter.Application.Interfaces.IRepositories;
 
 namespace Inviter.Infrastracture.Repositories
 {

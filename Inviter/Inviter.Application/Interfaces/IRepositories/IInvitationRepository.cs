@@ -1,7 +1,7 @@
 ﻿
 using Inviter.Domain.DbModels;
 
-namespace Inviter.Domain.IRepositories
+namespace Inviter.Application.Interfaces.IRepositories
 {
     public interface IInvitationRepository
     {

@@ -1,6 +1,6 @@
 ﻿using Inviter.Domain.Models;
 
-namespace Inviter.Application.IServices
+namespace Inviter.Application.Interfaces.IServices
 {
     public interface IInvitationService
     {

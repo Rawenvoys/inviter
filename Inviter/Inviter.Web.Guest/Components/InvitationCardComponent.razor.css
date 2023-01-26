@@ -1,0 +1,25 @@
+﻿.page {
+    width: 100vh;
+    height: 75vh;
+    background-color: #0b074a;
+    padding-top: 3vh;
+    box-shadow: 10px 10px 5px #a6afb3;
+    text-align:center;
+}
+
+.text_page {
+    width: 47vh;
+    height: 69vh;
+    background-color: #f7f7f6;
+    margin-left: 3vh;
+    text-align: center;
+    font-family: initial;
+}
+
+.text-box {
+    margin: 10px;
+    height: 95%;
+    border-image: linear-gradient(#df7b00, #f9f336,#f5e17e) 30;
+    border-width: 1px;
+    border-style: solid;
+}

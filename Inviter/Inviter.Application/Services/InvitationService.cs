@@ -1,6 +1,7 @@
-﻿using Inviter.Domain.IRepositories;
-using Inviter.Domain.Models;
-using Inviter.Application.IServices;
+﻿using Inviter.Domain.Models;
+using Inviter.Application.Interfaces.IServices;
+using Inviter.Application.Interfaces.IRepositories;
+using Inviter.Domain.Mappers;
 
 namespace Inviter.Application.Services
 {
@@ -19,22 +20,7 @@ namespace Inviter.Application.Services
         {
             var invitationDto = await _invitationRepository.GetInvitation(code);
             var invitationGuestList = await _guestRepository.GetInvitationGuests(code);
-
-            return new Invitation()
-            {
-                Code = invitationDto.Id,
-                DisplayText = invitationDto.DisplayText,
-                AccompanyingPerson = invitationDto.AccompanyingPerson,
-                AskForRoom = invitationDto.AskForRoom,
-                RelationType = invitationDto.RelationType,
-                GuestList = invitationGuestList.Select(i => new Guest
-                {
-                    Id = i.Id,
-                    FirstName = i.FirstName,
-                    LastName = i.LastName,
-                    IsChild = i.IsChild
-                }).ToList()
-            };
+            return InvitationMapper.Map(invitationDto, invitationGuestList);
         }
     }
 }
