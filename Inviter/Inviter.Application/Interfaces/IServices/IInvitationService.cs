@@ -4,6 +4,8 @@ namespace Inviter.Application.Interfaces.IServices
 {
     public interface IInvitationService
     {
-        Task<Invitation> Find(Guid code);
+        Task<Invitation> FindAsync(Guid code);
+
+        Task SaveResponseAsync(Invitation invitation);
     }
 }

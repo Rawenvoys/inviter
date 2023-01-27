@@ -14,15 +14,21 @@ namespace Inviter.Domain.Mappers
         {
             Code = invitationDto.Id,
             DisplayText = invitationDto.DisplayText,
-            AccompanyingPerson = invitationDto.AccompanyingPerson,
+            IsAccompanyingPerson = invitationDto.AccompanyingPerson,
             AskForRoom = invitationDto.AskForRoom,
             RelationType = invitationDto.RelationType,
-            GuestList = guestsDto.Select(i => new Guest
+            AccompanyingPerson = new()
+            {
+                IsChild = false,
+                Response = new Response()
+            },
+            Guests = guestsDto.Select(i => new Guest
             {
                 Id = i.Id,
                 FirstName = i.FirstName,
                 LastName = i.LastName,
-                IsChild = i.IsChild
+                IsChild = i.IsChild,
+                Response = new Response()
             }).ToList()
         };
     }

@@ -6,7 +6,7 @@ namespace Inviter.Infrastracture.Repositories
 {
     public class InvitationRepository : IInvitationRepository
     {
-        public async Task<InvitationDto> GetInvitation(Guid id) => new()
+        public async Task<InvitationDto> GetInvitationAsync(Guid id) => new()
         {
             Id = id,
             DisplayText = "Beatę Szadurską z osobą towarzyszącą",
@@ -14,5 +14,9 @@ namespace Inviter.Infrastracture.Repositories
             AskForRoom = false,
             RelationType = RelationType.AnnaFamily
         };
+
+        public async Task SaveAsync(InvitationDto invitationDto)
+        {
+        }
     }
 }

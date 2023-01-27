@@ -5,7 +5,7 @@ namespace Inviter.Infrastracture.Repositories
 {
     public class GuestRepository : IGuestRepository
     {
-        public async Task<List<GuestDto>> GetInvitationGuests(Guid invitationId) => new ()
+        public async Task<List<GuestDto>> GetInvitationGuestsAsync(Guid invitationId) => new ()
             {
                 new ()
                 {

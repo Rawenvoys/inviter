@@ -13,9 +13,13 @@ namespace Inviter.Web.Guest.Pages
         [Inject]
         IInvitationService _invitationService { get; set; }
 
+        [Inject]
+        NavigationManager _navManager { get; set; }
+
         public Invitation Invitation { get; set; }
 
-        protected override async Task OnInitializedAsync() => Invitation = await _invitationService.Find(Code);
+        protected override async Task OnInitializedAsync() => Invitation = await _invitationService.FindAsync(Code);
 
+        private async Task RedirectToDeclarationFormAsync() => _navManager.NavigateTo($"/Formularz/{Code}");
     }
 }

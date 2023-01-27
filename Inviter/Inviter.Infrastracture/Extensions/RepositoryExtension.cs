@@ -10,6 +10,7 @@ namespace Inviter.Infrastracture.Extensions
         {
             services.AddScoped<IGuestRepository, GuestRepository>();
             services.AddScoped<IInvitationRepository, InvitationRepository>();
+            services.AddScoped<IResponseRepository, ResponseRepository>();
         }
     }
 }

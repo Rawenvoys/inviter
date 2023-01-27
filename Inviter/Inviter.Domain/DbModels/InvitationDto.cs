@@ -9,6 +9,7 @@ namespace Inviter.Domain.DbModels
         public bool AccompanyingPerson { get; set; }
         public bool AskForRoom { get; set; }
         public RelationType RelationType { get; set; }
-        public string? PhoneNo { get; set; }    
+        public string? PhoneNo { get; set; }
+        public string? Notes { get; set; }
     }
 }
