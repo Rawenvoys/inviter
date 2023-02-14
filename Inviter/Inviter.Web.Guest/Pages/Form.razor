@@ -10,13 +10,19 @@
 
     @if (guest.Response.WeddingParty)
     {
+        @if (invitation.AskForRoom)
+        {
+            <MudCheckBox @bind-Checked="guest.Response.Accomodation" Label="Czy potrzebujesz noclegu?"></MudCheckBox>
+            if (guest.Response.Accomodation)
+            {
+                int roomNumber = 0;
+                <MudTextField @bind-Value="roomNumber" Label="Liczba pokoi" Variant="Variant.Outlined"/>
+            }
+        }
         <MudCheckBox @bind-Checked="guest.Response.AfterParty" Label="Czy wybierasz się na poprawiny?"></MudCheckBox>
     }
 
-    @if (invitation.AskForRoom)
-    {
-        <MudCheckBox @bind-Checked="guest.Response.Accomodation" Label="Czy potrzebujesz noclegu?"></MudCheckBox>
-    }
+
 }
 
 

@@ -11,7 +11,7 @@ namespace Inviter.Infrastracture.Repositories
             Id = id,
             DisplayText = "Beatę Szadurską z osobą towarzyszącą",
             AccompanyingPerson = true,
-            AskForRoom = false,
+            AskForRoom = true,
             RelationType = RelationType.AnnaFamily
         };
 
