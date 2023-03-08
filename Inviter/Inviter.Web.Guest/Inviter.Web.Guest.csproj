@@ -7,24 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Components\InvitationCardComponent.razor.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Components\InvitationCardComponent.razor.css" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Folder Include="Components\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="6.1.7" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Inviter.Application\Inviter.Application.csproj" />
-    <ProjectReference Include="..\Inviter.Infrastracture\Inviter.Infrastracture.csproj" />
   </ItemGroup>
 
 </Project>
