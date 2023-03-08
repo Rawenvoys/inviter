@@ -1,0 +1,18 @@
+# Build YAML file for Inviter.Web.Guest
+
+env:
+    PROJECT_NAME: Inviter.Web.Guest
+    
+name: $PROJECT_NAME
+
+on: 
+    push:
+        branches: [ "main", "develop" ]
+    pull_request:
+        branches: [ "develop" ]
+
+jobs: 
+    "Build $PROJECT_NAME":
+        steps:
+          - name: "Checkout Code"
+            run: echo "Start Checkout $PROJECT_NAME"
