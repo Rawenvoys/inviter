@@ -3,7 +3,7 @@
 env:
     PROJECT_NAME: Inviter.Web.Guest
     
-name: $PROJECT_NAME
+name: "$PROJECT_NAME"
 
 on: 
     push:
@@ -12,7 +12,7 @@ on:
         branches: [ "develop" ]
 
 jobs: 
-    "Build $PROJECT_NAME":
+    "Build $(PROJECT_NAME)":
         steps:
           - name: "Checkout Code"
             run: echo "Start Checkout $PROJECT_NAME"
