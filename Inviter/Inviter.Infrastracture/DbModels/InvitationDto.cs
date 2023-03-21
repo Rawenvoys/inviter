@@ -12,6 +12,5 @@ namespace Inviter.Infrastracture.DbModels
         public bool AskForAfterparty { get; set; }
         public bool AskForAccomodation { get; set; }
         public bool AskAboutAccompanying { get; set; }
-
     }
 }

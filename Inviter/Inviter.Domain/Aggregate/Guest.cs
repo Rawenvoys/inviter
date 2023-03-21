@@ -11,6 +11,7 @@ namespace Inviter.Domain.Aggregate
         public bool IsAccompanyingPerson { get; set; }
         public bool IsChild { get; set; }
 
+
         public Guest(Guid id, string firstName, string lastName, bool isAccompanyingPerson, bool isChild)
         {
             Id = id;

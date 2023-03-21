@@ -28,7 +28,7 @@ namespace Inviter.Domain.Aggregate
             AccompanyingPerson = accompanyingPerson;
         }
 
-        //ToDo: IGuestRepository? 
+        //ToDo: 
         //public void SetAccompanyingPerson(string firstName, string lastName)
         //{
         //    switch (AccompanyingPerson)
