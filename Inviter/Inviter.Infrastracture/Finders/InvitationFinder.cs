@@ -2,7 +2,7 @@
 using Inviter.Domain.Exceptions;
 using Inviter.Domain.ValueObjects.Invitation;
 
-namespace Inviter.Infrastracture.Repositories
+namespace Inviter.Infrastracture.Finders
 {
     public class InvitationFinder : IInvitationFinder
     {
