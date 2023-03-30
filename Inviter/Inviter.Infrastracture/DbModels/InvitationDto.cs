@@ -7,8 +7,6 @@ namespace Inviter.Infrastracture.DbModels
         public Guid Id { get; set; }
         public string DisplayName { get; set; }
         public int KnowledgeTypes { get; set; }
-
-        //TODO: moze flaga?
         public bool AskForAfterparty { get; set; }
         public bool AskForAccomodation { get; set; }
         public bool AskAboutAccompanying { get; set; }

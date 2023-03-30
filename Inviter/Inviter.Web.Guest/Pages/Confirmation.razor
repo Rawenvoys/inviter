@@ -1,0 +1,54 @@
+﻿@page "/Potwierdzenie/{code:guid}"
+@layout InviterLayout
+<PageTitle>Potwierdzenie</PageTitle>
+
+@if (invitation is null || invitation.Guests is null)
+{
+    <InvLoading />
+}
+else
+{
+    <div style="padding: 0px 20%;">
+        <MudExpansionPanels MultiExpansion="true">
+            @foreach (var guest in invitation.Guests)
+            {
+                <MudExpansionPanel Text="@guest.FullName" IsInitiallyExpanded="true">
+                    <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtWeddingParty" Label="Będę na weselu"></MudCheckBox>
+
+                    @if (invitation.AskForAfterparty && guest.Response.WillBeAtWeddingParty)
+                    {
+                        @if (invitation.AskAboutAccompanying)
+                        {
+                            <MudCheckBox T="bool" @bind-Checked="@invitation.WillTakeAccompanyingPerson" Label="Zabieram osobę towarzyszącą"></MudCheckBox>
+                        }
+
+                        <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtAfterparty" Label="Będę na poprawinach"></MudCheckBox>
+
+                        @if (invitation.AskForAccomodation && guest.Response.WillBeAtAfterparty)
+                        {
+                            <MudCheckBox T="bool" @bind-Checked="@guest.Response.NeedAccomodation" Label="Potrzebuję"></MudCheckBox>
+                        }
+                    }
+                </MudExpansionPanel>
+            }
+
+            @if (displayAccompanyingPerson)
+            {
+                <MudExpansionPanel Text="@accompayingPersonDisplayText">
+
+                    <MudTextField @bind-Value="invitation.AccompanyingPerson.FirstName" Label="Imię" Variant="Variant.Text"></MudTextField>
+                    <MudTextField @bind-Value="invitation.AccompanyingPerson.LastName" Label="Nazwisko" Variant="Variant.Text"></MudTextField>
+                </MudExpansionPanel>
+            }
+        </MudExpansionPanels>
+
+        <div style="text-align:center;">
+            <MudButton Variant="Variant.Filled" Style="background-color: #a51111; margin-top: 20px;" Color="Color.Info" OnClick="RedirectToInvitation">Powrót bez zapisu</MudButton>
+            <MudButton Variant="Variant.Filled" Style="background-color: #063282; margin-top: 20px;" Color="Color.Info" OnClick="SaveAsync">Zapisz</MudButton>
+        </div>
+
+    </div>
+}
+
+
+

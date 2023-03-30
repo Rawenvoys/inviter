@@ -1,33 +1,20 @@
-﻿@using Inviter.Web.Components.InvComponents;
+﻿@using Inviter.Web.Guest.Components;
 @page "/{code:guid}"
+@layout InviterLayout
 
-<MudContainer Style="
-    padding: 20px;
-    height: 100vh;
-    border: 40px #063282 solid;">
-    <MudContainer Style="padding:10px; border: 2px solid #f5df9e; height: -webkit-fill-available;">
-        <div style="text-align: center; height: -webkit-fill-available">
-            <MudImage Src="/images/toppng.com-wedding-rings-8000x5305.png"
-                      Style="-webkit-user-select: none; position: relative; top: -50px;"
-                      Width="85">
-            </MudImage>
-            <div style="text-align: center; height: -webkit-fill-available; overflow-y:auto; overflow-x: hidden;" class="position-top">
+<PageTitle>Zaproszenie</PageTitle>
 
-                <MudGrid Spacing="1" Justify="Justify.Center">
-                    <MudItem xs="12" sm="6" lg="6">
-                        <PoemComponent></PoemComponent>
-                        <InvSeparator></InvSeparator>
-                        <InvitationComponent DisplayName="Beatę Szadurską"></InvitationComponent>
-                    </MudItem>
-                    <MudItem xs="12" sm="6" lg="6">
-                        <WeddingPartyInvitation></WeddingPartyInvitation>
-                        <InvSeparator></InvSeparator>
-                        <ConfirmationComponent></ConfirmationComponent>
-                        <InvSeparator></InvSeparator>
-                    </MudItem>
-                </MudGrid>
-                
-            </div>
-        </div>
-    </MudContainer>
-</MudContainer>
+<MudGrid Spacing="1" Justify="Justify.Center">
+    <MudItem xs="12" sm="6" lg="6">
+        <PoemComponent></PoemComponent>
+        <InvSeparator></InvSeparator>
+        <InvitationComponent @ref="InvitationComponentRef" />
+    </MudItem>
+    <MudItem xs="12" sm="6" lg="6">
+        <WeddingPartyInvitation></WeddingPartyInvitation>
+        <InvSeparator></InvSeparator>
+        <ConfirmationComponent Code="Code"></ConfirmationComponent>
+        <InvSeparator></InvSeparator>
+        <MudImage Src="/images/rebus.png" Width="300" Style="-webkit-user-select: none; z-index: -1; position: relative;" Fluid="true" />
+    </MudItem>
+</MudGrid>

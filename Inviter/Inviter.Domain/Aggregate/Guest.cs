@@ -5,28 +5,25 @@ namespace Inviter.Domain.Aggregate
 {
     public class Guest
     {
-        public Id? Id { get; set; }
-        public Name FirstName { get; set; }
-        public Name LastName { get; set; }
+        public Guid? Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
         public bool IsAccompanyingPerson { get; set; }
         public bool IsChild { get; set; }
+        public Response Response { get; set; }
 
 
-        public Guest(Guid id, string firstName, string lastName, bool isAccompanyingPerson, bool isChild)
+        public Guest(Guid id, string firstName, string lastName, bool isAccompanyingPerson, bool isChild, Response? response)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
             IsAccompanyingPerson = isAccompanyingPerson;
             IsChild = isChild;
+            Response = response ?? new(id);
         }
 
-        public Guest(string firstName, string lastName)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            IsAccompanyingPerson = true;
-            IsChild = false;
-        }
+        public Guest() => Response = new();
     }
 }

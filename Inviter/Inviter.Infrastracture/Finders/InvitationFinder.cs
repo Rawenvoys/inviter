@@ -18,7 +18,7 @@ namespace Inviter.Infrastracture.Finders
         {
             using var connection = _inviterContext.CreateConnection();
             var invitation = await connection.QueryFirstOrDefaultAsync<InvitationDto>("SP_InvitationGetByCode",
-                new { code }, commandType: CommandType.StoredProcedure);
+                new { code = (Guid)code }, commandType: CommandType.StoredProcedure);
             if (invitation is null) throw new InvitationNotFoundException(code);
 
             var invitationGuests = await _guestRepository.GetGuestsForInvitation(code);
