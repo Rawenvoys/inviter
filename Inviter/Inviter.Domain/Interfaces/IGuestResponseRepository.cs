@@ -2,9 +2,9 @@
 
 namespace Inviter.Domain.Interfaces
 {
-    public interface IGuestRepository
+    public interface IGuestResponseRepository
     {
-        public Task<Guid> AddOrEdit(Guest guest);
+        public Task<Guid?> AddOrEdit(Response response);
         public Task Remove(Guid guestId);
     }
 }

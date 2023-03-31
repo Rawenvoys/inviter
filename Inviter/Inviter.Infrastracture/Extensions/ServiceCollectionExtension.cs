@@ -1,4 +1,5 @@
 ﻿using Inviter.Infrastracture.Finders;
+using Inviter.Infrastracture.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Inviter.Infrastracture.Extensions
@@ -19,6 +20,8 @@ namespace Inviter.Infrastracture.Extensions
 
         private static void AddRepositories(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddScoped<IGuestRepository, GuestRepository>();
+            serviceCollection.AddScoped<IGuestResponseRepository, GuestResponseRepository>();
 
         }
 

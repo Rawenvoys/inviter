@@ -1,5 +1,4 @@
 ﻿using Inviter.Domain.Aggregate;
-using Inviter.Domain.Interfaces;
 
 namespace Inviter.Application.Commands.GetInvitation
 {

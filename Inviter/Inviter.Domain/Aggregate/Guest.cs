@@ -24,6 +24,19 @@ namespace Inviter.Domain.Aggregate
             Response = response ?? new(id);
         }
 
-        public Guest() => Response = new();
+        public Guest()
+        {
+
+        }
+
+        public static Guest CreateAccompanyingPerson()
+        {
+            return new()
+            {
+                IsAccompanyingPerson = true,
+                IsChild = false,
+                Response = new()
+            };
+        }
     }
 }

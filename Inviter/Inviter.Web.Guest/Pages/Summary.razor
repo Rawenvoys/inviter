@@ -1,0 +1,25 @@
+﻿@page "/Podziekowanie/{code:guid}"
+@layout InviterLayout
+<PageTitle>Dziękujemy</PageTitle>
+
+<div class="allura">
+    <p>
+        Dziękujemy!
+        @*<span style='font-size:20px;'>&#128513;</span>*@
+    </p>
+</div>
+
+<div class="times-new-roman">
+    <p>W razie pytań prosimy o kontakt:</p>
+
+    <div style="padding: 35px 25%">
+
+        <MudGrid>
+            <ContactComponent FullName="Anna Szadurska" PhoneNo="+48 607 934 094"></ContactComponent>
+            <ContactComponent FullName="Łukasz Wiśniewski" PhoneNo="+48 660 999 793"></ContactComponent>
+        </MudGrid>
+    </div>
+</div>
+
+<MudButton Variant="Variant.Filled" Style="background-color: #063282; margin-top: 20px;" Color="Color.Info" OnClick="RedirectToInvitation">Powrót do zaproszenia</MudButton>
+
