@@ -14,9 +14,9 @@
         {
             if (request.Invitation.WillTakeAccompanyingPerson)
             {
-                var guestId = await _guestRepository.AddOrEdit(request.Invitation.AccompanyingPerson);
+                var guestId = await _guestRepository.Save(request.Invitation.AccompanyingPerson);
                 request.Invitation.AccompanyingPerson.Response.GuestId = guestId;
-                await _guestResponseRepository.AddOrEdit(request.Invitation.AccompanyingPerson.Response);
+                await _guestResponseRepository.Save(request.Invitation.AccompanyingPerson.Response);
             }
             else if (request.Invitation.AccompanyingPerson?.Id.HasValue ?? false)
             {
@@ -25,9 +25,9 @@
 
             foreach(var guest in request.Invitation.Guests)
             {
-                var guestId = await _guestRepository.AddOrEdit(guest);
+                var guestId = await _guestRepository.Save(guest);
                 guest.Response.GuestId = guestId;
-                await _guestResponseRepository.AddOrEdit(guest.Response);
+                await _guestResponseRepository.Save(guest.Response);
             }
 
             return true;

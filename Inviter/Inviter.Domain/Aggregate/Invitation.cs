@@ -28,22 +28,9 @@ namespace Inviter.Domain.Aggregate
             var accompanyingPerson = guests?.FirstOrDefault(g => g.IsAccompanyingPerson);
             Guests = guests?.Where(g => !g.IsAccompanyingPerson).ToList() ?? new List<Guest>();
             WillTakeAccompanyingPerson = accompanyingPerson is not null;
-            AccompanyingPerson = !WillTakeAccompanyingPerson && askAboutAccompanying ? Guest.CreateAccompanyingPerson() : null;
+            AccompanyingPerson = !WillTakeAccompanyingPerson && askAboutAccompanying ? Guest.CreateAccompanyingPerson(id) : accompanyingPerson;
         }
 
-        //ToDo: 
-        //public void SetAccompanyingPerson(string firstName, string lastName)
-        //{
-        //    switch (AccompanyingPerson)
-        //    {
-        //        case null:
-        //            AccompanyingPerson = new(firstName, lastName);
-        //            break;
-        //        default:
-        //            AccompanyingPerson.FirstName = firstName;
-        //            AccompanyingPerson.LastName = lastName;
-        //            break;
-        //    }
-        //}
+       
     }
 }

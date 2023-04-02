@@ -31,7 +31,7 @@ namespace Inviter.Infrastracture.Finders
             foreach(var guest in guests)
             {
                 var response = await _guestResponseFinder.Get(guest.Id);
-                result.Add(new(guest.Id, guest.FirstName, guest.LastName, guest.IsAccompanyingPerson, guest.IsChild, response));
+                result.Add(new(guest.Id, guest.InvitationId, guest.FirstName, guest.LastName, guest.IsAccompanyingPerson, guest.IsChild, response));
             }
             return result;
         }

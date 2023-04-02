@@ -9,14 +9,14 @@ namespace Inviter.Infrastracture.Repositories
 {
     public class GuestResponseRepository : IGuestResponseRepository
     {
-        public Task<Guid?> AddOrEdit(Response response)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly InviterContext _inviterContext;
 
-        public Task Remove(Guid guestId)
+        public GuestResponseRepository(InviterContext inviterContext) => _inviterContext = inviterContext;
+
+        public async Task<Guid> Save(Response response)
         {
-            throw new NotImplementedException();
+            using var connection = _inviterContext.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<Guid>("SP_GuestResponseSave", new { guestid = response.GuestId, willBeAtWeddingParty = response.WillBeAtWeddingParty, willBeAtAfterparty = response.WillBeAtAfterparty, needAccomodation = response.NeedAccomodation }, commandType: CommandType.StoredProcedure);
         }
     }
 }

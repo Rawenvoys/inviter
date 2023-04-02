@@ -6,6 +6,7 @@ namespace Inviter.Domain.Aggregate
     public class Guest
     {
         public Guid? Id { get; set; }
+        public Guid InvitationId { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
@@ -14,9 +15,10 @@ namespace Inviter.Domain.Aggregate
         public Response Response { get; set; }
 
 
-        public Guest(Guid id, string firstName, string lastName, bool isAccompanyingPerson, bool isChild, Response? response)
+        public Guest(Guid id, Guid invitationId, string? firstName, string? lastName, bool isAccompanyingPerson, bool isChild, Response? response)
         {
             Id = id;
+            InvitationId = invitationId;
             FirstName = firstName;
             LastName = lastName;
             IsAccompanyingPerson = isAccompanyingPerson;
@@ -29,13 +31,14 @@ namespace Inviter.Domain.Aggregate
 
         }
 
-        public static Guest CreateAccompanyingPerson()
+        public static Guest CreateAccompanyingPerson(Guid invitationId)
         {
             return new()
             {
+                InvitationId = invitationId,
                 IsAccompanyingPerson = true,
                 IsChild = false,
-                Response = new()
+                Response = Response.CreateAccompanyingPersonResponse()
             };
         }
     }

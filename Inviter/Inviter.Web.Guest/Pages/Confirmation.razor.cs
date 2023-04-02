@@ -32,7 +32,7 @@ namespace Inviter.Web.Guest.Pages
         private async Task SaveAsync()
         {
             var saveResult = await _mediator.Send(new SaveInvitationCommand(invitation));
-            if (saveResult) _navigationManager.NavigateTo("/" + Code.ToString());
+            if (saveResult) _navigationManager.NavigateTo("/Podziekowanie/" + Code.ToString());
         }
 
         private void RedirectToInvitation()
