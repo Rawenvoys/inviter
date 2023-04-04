@@ -1,0 +1,23 @@
+﻿@using Inviter.Web.Guest.Components;
+@page "/{code:guid}"
+@layout InviterLayout
+
+<PageTitle>Zaproszenie</PageTitle>
+
+<MudGrid Spacing="1" Justify="Justify.Center">
+    <MudItem xs="12" sm="6" lg="6">
+        <PoemComponent></PoemComponent>
+        <InvSeparator></InvSeparator>
+        <InvitationComponent @ref="InvitationComponentRef" />
+    </MudItem>
+    <MudItem xs="12" sm="6" lg="6">
+        <WeddingPartyInvitation></WeddingPartyInvitation>
+        <InvSeparator></InvSeparator>
+        @if (invitation.IsAnyGuest)
+        {
+            <ConfirmationComponent Code="Code"></ConfirmationComponent>
+            <InvSeparator></InvSeparator>
+        }
+        <MudImage Src="/images/rebus.png" Width="300" Style="-webkit-user-select: none; z-index: -1; position: relative;" Fluid="true" />
+    </MudItem>
+</MudGrid>

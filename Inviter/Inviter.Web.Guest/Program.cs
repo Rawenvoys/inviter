@@ -1,6 +1,6 @@
 
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using Inviter.Application.Extensions;
+using Inviter.Infrastracture.Extensions;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
+builder.Services.AddInfrastracture();
+builder.Services.AddApplication();
 
 var app = builder.Build();
 

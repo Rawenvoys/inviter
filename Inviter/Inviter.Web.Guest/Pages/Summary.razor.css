@@ -1,0 +1,9 @@
+﻿#summaryDiv {
+    padding: 35px 25%;
+}
+
+@media (max-width: 600px) {
+    #summaryDiv {
+        padding: 35px 0px;
+    }
+}

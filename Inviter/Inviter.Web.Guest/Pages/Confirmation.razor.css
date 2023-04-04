@@ -1,0 +1,9 @@
+﻿#confirmationDiv {
+    padding: 0px 20%;
+}
+
+@media (max-width: 600px) {
+    #confirmationDiv {
+        padding: 0px 5%;
+    }
+}

@@ -1,0 +1,28 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Style="padding: 0px !important;">
+    <MudContainer Style="
+    padding: 20px;
+    height: 100vh;
+    border: 40px #063282 solid;">
+        <MudContainer Style="padding:10px; border: 2px solid #f5df9e; height: -webkit-fill-available;">
+            <div style="text-align: center; height: -webkit-fill-available">
+                <MudImage Src="/images/toppng.com-wedding-rings-8000x5305.png"
+                          Style="-webkit-user-select: none; position: relative; top: -50px;"
+                          Width="85">
+                </MudImage>
+                <div id="scrollableDiv" style="text-align: center; height: -webkit-fill-available; 
+                            overflow-y:auto; overflow-x: hidden;
+                            /*-ms-overflow-style: none; scrollbar-width: none;*/
+                           " 
+                class="position-top">
+                    @Body
+                </div>
+            </div>
+        </MudContainer>
+    </MudContainer>
+</MudContainer>
