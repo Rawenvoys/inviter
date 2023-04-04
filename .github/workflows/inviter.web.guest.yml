@@ -13,5 +13,5 @@ jobs:
     "Build Inviter.Web.Guest":
         runs-on: ubuntu-latest
         steps:
-          - name: "Checkout Code"
-            run: echo "Start Checkout ${{ PROJECT_NAME }}"
+          - name: "Test Step 1"
+            run: echo "Start running test step"
