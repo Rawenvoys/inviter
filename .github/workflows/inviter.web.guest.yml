@@ -3,16 +3,15 @@
 env:
     PROJECT_NAME: Inviter.Web.Guest
     
-name: "$PROJECT_NAME"
+name: "Inviter.Web.Guest"
 
 on: 
-    push:
-        branches: [ "main", "develop" ]
     pull_request:
         branches: [ "develop" ]
 
 jobs: 
-    "Build $(PROJECT_NAME)":
+    "Build Inviter.Web.Guest":
+        runs-on: ubuntu-latest
         steps:
           - name: "Checkout Code"
-            run: echo "Start Checkout $PROJECT_NAME"
+            run: echo "Start Checkout ${{ PROJECT_NAME }}"
