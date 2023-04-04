@@ -6,7 +6,7 @@ namespace Inviter.Domain.Aggregate
         public Guid? GuestId { get; set; }
         public bool WillBeAtWeddingParty => WillBeAtWeddingPartyCb;
         public bool WillBeAtAfterparty => WillBeAtWeddingParty && WillBeAtAfterpartyCb;
-        public bool NeedAccomodation => WillBeAtAfterparty && NeedAccomodationCb;
+        public bool NeedAccomodation => WillBeAtWeddingParty && NeedAccomodationCb;
 
         public bool WillBeAtWeddingPartyCb { get; set; }
         public bool WillBeAtAfterpartyCb { get; set; }

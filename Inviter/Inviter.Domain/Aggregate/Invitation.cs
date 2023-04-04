@@ -16,6 +16,7 @@ namespace Inviter.Domain.Aggregate
         public bool AskAboutAccompanying { get; set; }
         public Guest? AccompanyingPerson { get; set; }
         public bool WillTakeAccompanyingPerson { get; set; }
+        public bool IsAnyGuest => Guests is not null && Guests.Count > 0;
 
         public Invitation(Guid id, string displayName, int source, bool askForAccomodation, bool askForAfterparty, bool askAboutAccompanying, IList<Guest>? guests)
         {

@@ -13,8 +13,11 @@
     <MudItem xs="12" sm="6" lg="6">
         <WeddingPartyInvitation></WeddingPartyInvitation>
         <InvSeparator></InvSeparator>
-        <ConfirmationComponent Code="Code"></ConfirmationComponent>
-        <InvSeparator></InvSeparator>
+        @if (invitation.IsAnyGuest)
+        {
+            <ConfirmationComponent Code="Code"></ConfirmationComponent>
+            <InvSeparator></InvSeparator>
+        }
         <MudImage Src="/images/rebus.png" Width="300" Style="-webkit-user-select: none; z-index: -1; position: relative;" Fluid="true" />
     </MudItem>
 </MudGrid>

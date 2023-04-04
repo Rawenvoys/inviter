@@ -8,26 +8,26 @@
 }
 else
 {
-    <div style="padding: 0px 20%;">
+    <div id="confirmationDiv">
         <MudExpansionPanels MultiExpansion="true">
             @foreach (var guest in invitation.Guests)
             {
                 <MudExpansionPanel Text="@guest.FullName" IsInitiallyExpanded="true">
-                    <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtWeddingPartyCb" Label="Będę na weselu"></MudCheckBox>
+                    <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtWeddingPartyCb" Style="text-align: left;" Label="Będę na weselu"></MudCheckBox>
 
                     @if (invitation.AskForAfterparty && guest.Response.WillBeAtWeddingParty)
                     {
                         @if (invitation.AskAboutAccompanying)
                         {
-                            <MudCheckBox T="bool" @bind-Checked="@invitation.WillTakeAccompanyingPerson" Label="Zabieram osobę towarzyszącą"></MudCheckBox>
+                            <MudCheckBox T="bool" @bind-Checked="@invitation.WillTakeAccompanyingPerson" Style="text-align: left;" Label="Zabieram osobę towarzyszącą"></MudCheckBox>
                         }
 
-                        <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtAfterpartyCb" Label="Będę na poprawinach"></MudCheckBox>
 
-                        @if (invitation.AskForAccomodation && guest.Response.WillBeAtAfterparty)
+                        @if (invitation.AskForAccomodation)
                         {
-                            <MudCheckBox T="bool" @bind-Checked="@guest.Response.NeedAccomodationCb" Label="Potrzebuję"></MudCheckBox>
+                            <MudCheckBox T="bool" @bind-Checked="@guest.Response.NeedAccomodationCb" Style="text-align: left;" Label="Potrzebuję noclegu"></MudCheckBox>
                         }
+                        <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtAfterpartyCb" Style="text-align: left;" Label="Będę na poprawinach"></MudCheckBox>
                     }
                 </MudExpansionPanel>
             }

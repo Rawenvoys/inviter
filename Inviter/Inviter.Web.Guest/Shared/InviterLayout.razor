@@ -1,8 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider/> 
-<MudDialogProvider/> 
-<MudSnackbarProvider/>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Style="padding: 0px !important;">
     <MudContainer Style="
@@ -15,7 +15,11 @@
                           Style="-webkit-user-select: none; position: relative; top: -50px;"
                           Width="85">
                 </MudImage>
-                <div style="text-align: center; height: -webkit-fill-available; overflow-y:auto; overflow-x: hidden;" class="position-top">
+                <div id="scrollableDiv" style="text-align: center; height: -webkit-fill-available; 
+                            overflow-y:auto; overflow-x: hidden;
+                            /*-ms-overflow-style: none; scrollbar-width: none;*/
+                           " 
+                class="position-top">
                     @Body
                 </div>
             </div>
