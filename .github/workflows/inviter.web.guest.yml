@@ -10,7 +10,7 @@ on:
         branches: [ "develop" ]
 
 jobs: 
-    "Build Inviter.Web.Guest":
+    build_inviter_web_guest:
         runs-on: ubuntu-latest
         steps:
           - name: "Test Step 1"
