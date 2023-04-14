@@ -1,0 +1,34 @@
+﻿@page "/Generator"
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    @*<MudTextField @bind-Text="@Code" T="string" Label="Url"></MudTextField>*@
+
+    @if (invitations is null || invitations.Count == 0)
+    {
+        <InvLoading />
+    }
+    else
+    {
+        <MudGrid Style="text-align:center;">
+            @foreach (var invitation in invitations)
+            {
+            <MudItem xs="9" lg="9">
+                <MudText Typo="Typo.body1">@invitation.DisplayName</MudText>
+            </MudItem>
+            <MudItem xs="3" lg="3">
+                <MudCheckBox T="bool" @bind-Checked="@invitation.IsSelectedToGenerate"></MudCheckBox>
+            </MudItem>
+            <MudItem xs="12" lg="12">
+                <MudImage Src="@invitation.QRCodeBase64" Width="200" />
+            </MudItem>
+            }
+            <MudItem xs="12" lg="12">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="GenerateQRCode">Wygeneruj QRCode</MudButton>
+            </MudItem>
+        </MudGrid>
+
+    }
+
+
+
+</MudContainer>

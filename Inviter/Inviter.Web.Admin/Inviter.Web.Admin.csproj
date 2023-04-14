@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="MudBlazor" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inviter.Application\Inviter.Application.csproj" />
+    <ProjectReference Include="..\Inviter.Domain\Inviter.Domain.csproj" />
+    <ProjectReference Include="..\Inviter.Infrastracture\Inviter.Infrastracture.csproj" />
+    <ProjectReference Include="..\Inviter.Web.Shared\Inviter.Web.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

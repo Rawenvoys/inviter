@@ -31,7 +31,7 @@ namespace Inviter.Web.Guest.Pages
 
         private async Task SaveAsync()
         {
-            var saveResult = await _mediator.Send(new SaveInvitationCommand(invitation));
+            var saveResult = await _mediator.Send(new SaveInvitationQuery(invitation));
             if (saveResult) _navigationManager.NavigateTo("/Podziekowanie/" + Code.ToString());
         }
 
