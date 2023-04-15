@@ -1,0 +1,7 @@
+﻿@page "/UrlGenerator"
+
+<MudTextField @bind-Text="@_input" T="string"></MudTextField>
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="GenerateQRCode">Wygeneruj QRCode</MudButton>
+
+<MudImage Src="@_imgSrc" Width="200" />

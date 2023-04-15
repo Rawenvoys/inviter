@@ -1,16 +1,16 @@
 ﻿namespace Inviter.Application.Queries.SaveInvitation
 {
-    public class SaveInvitationCommandHandler : IRequestHandler<SaveInvitationCommand, bool>
+    public class SaveInvitationQueryHandler : IRequestHandler<SaveInvitationQuery, bool>
     {
         private readonly IGuestRepository _guestRepository;
         private readonly IGuestResponseRepository _guestResponseRepository;
 
-        public SaveInvitationCommandHandler(IGuestRepository guestRepository, IGuestResponseRepository guestResponseRepository)
+        public SaveInvitationQueryHandler(IGuestRepository guestRepository, IGuestResponseRepository guestResponseRepository)
         {
             _guestRepository = guestRepository;
             _guestResponseRepository = guestResponseRepository;
         }
-        public async Task<bool> Handle(SaveInvitationCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(SaveInvitationQuery request, CancellationToken cancellationToken)
         {
             if (request.Invitation.WillTakeAccompanyingPerson)
             {

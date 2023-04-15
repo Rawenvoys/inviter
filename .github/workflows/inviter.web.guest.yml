@@ -2,6 +2,7 @@
 
 env:
     PROJECT_NAME: Inviter.Web.Guest
+    PROJECT_PATH: ~/Inviter/Inviter.Web.Guest/Inviter.Web.Guest.csproj
     
 name: "Inviter.Web.Guest"
 
@@ -10,8 +11,18 @@ on:
         branches: [ "develop" ]
 
 jobs: 
-    "Build Inviter.Web.Guest":
+    build_inviter_web_guest:
         runs-on: ubuntu-latest
         steps:
-          - name: "Checkout Code"
-            run: echo "Start Checkout ${{ PROJECT_NAME }}"
+          - name: "Checkout"
+            uses: actions/checkout@v3
+          - name: "Setup .NET 6.0"
+            uses: actions/setup-dotnet@v3
+            with:
+                dotnet-version: 6.0.x
+          - name: "Restore dependencies"
+            run: dotnet restore ~/Inviter.Web.Guest/Inviter.Web.Guest.csproj
+          - name: "Build"
+            run: dotnet build ~/Inviter.Web.Guest/Inviter.Web.Guest.csproj
+          # - name: "Run tests"
+            # run: dotnet test --no-build --verbosity normal

@@ -11,6 +11,8 @@ BEGIN
         ,i.AskForAfterparty 
         ,i.AskForAccomodation
         ,i.AskAboutAccompanying
+		,i.QRCode
+		,i.InvitationDate
 	FROM Invitation i
 	WHERE i.Id = @code
 END
@@ -133,6 +135,23 @@ BEGIN
 	OUTPUT $action, INSERTED.GuestId INTO @result;
 		
 	SELECT Id FROM @result
+END
+GO
+
+CREATE OR ALTER PROCEDURE SP_InvitationGetWithoutQRCode
+AS
+BEGIN
+	SELECT 
+		i.Id
+		,i.DisplayName
+		,i.KnowledgeTypes
+        ,i.AskForAfterparty 
+        ,i.AskForAccomodation
+        ,i.AskAboutAccompanying
+		,i.QRCode
+		,i.InvitationDate
+	FROM Invitation i
+	WHERE i.QRCode IS NULL
 END
 GO
 
