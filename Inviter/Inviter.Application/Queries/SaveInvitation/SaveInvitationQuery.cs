@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Inviter.Application.Queries.SaveInvitation
 {
-    public class SaveInvitationCommand : IRequest<bool>
+    public class SaveInvitationQuery : IRequest<bool>
     {
         public Invitation Invitation { get; set; }
-        public SaveInvitationCommand(Invitation invitation) => Invitation = invitation;
+        public SaveInvitationQuery(Invitation invitation) => Invitation = invitation;
     }
 }

@@ -1,13 +1,18 @@
-using Inviter.Web.Admin.Data;
+using Inviter.Application.Extensions;
+using Inviter.Infrastracture.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddMudServices();
+builder.Services.AddInfrastracture();
+builder.Services.AddApplication();
+
 
 var app = builder.Build();
 
