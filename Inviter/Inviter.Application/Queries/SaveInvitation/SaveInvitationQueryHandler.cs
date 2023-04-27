@@ -12,6 +12,8 @@
         }
         public async Task<bool> Handle(SaveInvitationQuery request, CancellationToken cancellationToken)
         {
+
+
             if (request.Invitation.WillTakeAccompanyingPerson)
             {
                 var guestId = await _guestRepository.Save(request.Invitation.AccompanyingPerson);

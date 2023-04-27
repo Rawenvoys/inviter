@@ -10,6 +10,6 @@ namespace Inviter.Domain.Interfaces
     //ToDo: Think about method per property
     public interface IInvitationRepository
     {
-        Task Edit(Invitation invitation);
+        Task Save(Invitation invitation);
     }
 }
