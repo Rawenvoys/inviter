@@ -156,3 +156,65 @@ END
 GO
 
 
+CREATE OR ALTER PROCEDURE SP_InvitationGetAll
+AS
+BEGIN
+	SELECT 
+		i.Id
+		,i.DisplayName
+		,i.KnowledgeTypes
+        ,i.AskForAfterparty 
+        ,i.AskForAccomodation
+        ,i.AskAboutAccompanying
+		,i.QRCode
+		,i.InvitationDate
+	FROM Invitation i
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE SP_InvitationSave
+(
+	 @id UNIQUEIDENTIFIER
+	,@displayName NVARCHAR(2000)
+	,@knowledgeTypes INT
+	,@askForAfterparty BIT
+	,@askForAccomodation BIT
+	,@askAboutAccompanying BIT
+	,@qrCode VARBINARY = NULL
+	,@invitationDate DATETIME2 = NULL
+)
+AS
+BEGIN
+	DECLARE @result TABLE(Name NVARCHAR(200), Id UNIQUEIDENTIFIER);
+	
+	MERGE Invitation AS i
+	USING (
+		SELECT 
+			@id AS 'Id'
+			,@displayName AS 'DisplayName'
+			,@knowledgeTypes AS 'KnowledgeTypes'
+			,@askForAfterparty AS 'AskForAfterparty'
+			,@askForAccomodation AS 'AskForAccomodation'
+			,@askAboutAccompanying AS 'AskAboutAccompanying'
+			,@qrCode AS 'QRCode'
+			,@invitationDate AS 'InvitationDate' 
+	) AS s
+	ON i.Id = s.Id
+	WHEN MATCHED THEN 
+		UPDATE 
+		SET DisplayName = @displayName
+			,KnowledgeTypes = @knowledgeTypes
+			,AskForAfterparty = @askForAfterparty
+			,AskForAccomodation = @askForAccomodation
+			,AskAboutAccompanying = @askAboutAccompanying
+			,QRCode = @qrCode
+			,InvitationDate = @invitationDate
+	WHEN NOT MATCHED THEN 
+		INSERT (Id, DisplayName, KnowledgeTypes, AskForAfterparty, AskForAccomodation, AskAboutAccompanying, QRCode, InvitationDate)
+		VALUES (@id, @displayName, @knowledgeTypes, @askForAfterparty, @askForAccomodation, @askAboutAccompanying, @qrCode, @invitationDate)
+	OUTPUT $action, INSERTED.Id INTO @result;
+		
+	SELECT Id FROM @result
+END
+GO

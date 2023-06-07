@@ -3,4 +3,26 @@
 <PageTitle>Panel Państwa Młodych</PageTitle>
 
 
-<h1>Zaproszenia</h1>
+<MudTable Items="invitations">
+    <HeaderContent>
+        <MudTh>Nazwa wyświetlania</MudTh>
+        <MudTh>Data zaproszenia</MudTh>
+        <MudTh>QRCode</MudTh>
+        <MudTh>Link</MudTh>
+        <MudTh>Opcje</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+         <MudTd DataLabel="Nazwa wyświetlania">@context.DisplayName</MudTd>
+         <MudTd DataLabel="Data zaproszenia">@context.InvitationDate</MudTd>
+         <MudTd DataLabel="QRCode">
+                <MudImage Src="@context.QRCodeBase64" Width="20" />
+         </MudTd>
+         <MudTd DataLabel="Link">
+             <MudLink Href="@context.Url" Target="_blank">@context.Code</MudLink>
+         </MudTd>
+         <MudTd DataLabel="Opcje">
+             <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.Edit" Size="@Size.Small" @onclick="() => NavigateToEdit(context.Code)"/>
+             <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Remove" Size="@Size.Small" Disabled="true"/>
+         </MudTd>
+    </RowTemplate>
+</MudTable>

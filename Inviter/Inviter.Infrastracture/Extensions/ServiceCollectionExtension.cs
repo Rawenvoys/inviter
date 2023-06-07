@@ -22,6 +22,7 @@ namespace Inviter.Infrastracture.Extensions
         {
             serviceCollection.AddScoped<IGuestRepository, GuestRepository>();
             serviceCollection.AddScoped<IGuestResponseRepository, GuestResponseRepository>();
+            serviceCollection.AddScoped<IInvitationRepository, InvitationRepository>();
         }
 
         public static void AddInfrastracture(this IServiceCollection serviceCollection)

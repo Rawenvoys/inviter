@@ -24,6 +24,7 @@ namespace Inviter.Domain.Aggregate
 
         public bool IsSelectedToGenerate { get; set; } = false;
         public string QRCodeBase64 { get; set; }
+        public byte[]? QRCodeByteArray { get; set; }
 
         public Invitation(Guid id, string displayName, int source, bool askForAccomodation, bool askForAfterparty, bool askAboutAccompanying, IList<Guest>? guests, DateTime? invitationDate, byte[]? qrCode)
         {
@@ -38,7 +39,8 @@ namespace Inviter.Domain.Aggregate
             WillTakeAccompanyingPerson = accompanyingPerson is not null;
             AccompanyingPerson = !WillTakeAccompanyingPerson && askAboutAccompanying ? Guest.CreateAccompanyingPerson(id) : accompanyingPerson;
             InvitationDate = invitationDate;
-            QRCode = qrCode is not null ? new QRCodeData(qrCode, QRCodeData.Compression.GZip) : null;
+            QRCode = qrCode is not null ? new QRCodeData(qrCode, QRCodeData.Compression.Uncompressed) : null;
+            QRCodeByteArray = qrCode;
         }
 
        

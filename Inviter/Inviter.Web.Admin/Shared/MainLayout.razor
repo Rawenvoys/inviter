@@ -1,9 +1,28 @@
 ﻿@inherits LayoutComponentBase
 
 <PageTitle>Panel Państwa Młodych</PageTitle>
-<MudThemeProvider/>
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 
- @Body
+<MudLayout>
+    <MudDrawer Elevation="1" Variant="@DrawerVariant.Responsive" Open="true">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Inviter</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudNavLink Match="NavLinkMatch.All" Href="/" Icon="@Icons.Material.Filled.CardGiftcard">Zaproszenia</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/Generator" Icon="@Icons.Material.Filled.QrCode2">Generator QR Code</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/Guests" Icon="@Icons.Material.Filled.Person">Lista gości</MudNavLink>
+            
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent Class="pt-16 px-16">
+        <MudContainer Class="mt-6">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+

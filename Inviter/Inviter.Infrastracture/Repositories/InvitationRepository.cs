@@ -9,9 +9,23 @@ namespace Inviter.Infrastracture.Repositories
 {
     internal class InvitationRepository : IInvitationRepository
     {
-        public Task Save(Invitation invitation)
+        private readonly InviterContext _inviterContext;
+
+        public InvitationRepository(InviterContext inviterContext) => _inviterContext = inviterContext;
+        public async Task<Guid> Save(Invitation invitation)
         {
-            throw new NotImplementedException();
+            using var connection = _inviterContext.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<Guid>("SP_InvitationSave",
+                                                                   new { id = invitation.Code
+                                                                   , displayName = invitation.DisplayName
+                                                                   , knowledgeTypes = (int)invitation.Source
+                                                                   , askForAfterparty = invitation.AskForAfterparty
+                                                                   , askForAccomodation = invitation.AskForAccomodation
+                                                                   , askAboutAccompanying = invitation.AskAboutAccompanying
+                                                                   , qrCode = invitation.QRCodeByteArray
+                                                                   , invitationDate = invitation.InvitationDate
+                                                                   },
+                                                                   commandType: CommandType.StoredProcedure);
         }
     }
 }
