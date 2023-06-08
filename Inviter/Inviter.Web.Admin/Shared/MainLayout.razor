@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using Inviter.Web.Admin.Consts
+@inherits LayoutComponentBase
 
 <PageTitle>Panel Państwa Młodych</PageTitle>
 <MudThemeProvider />
@@ -12,9 +13,9 @@
             <MudText Typo="Typo.h6">Inviter</MudText>
         </MudDrawerHeader>
         <MudNavMenu>
-            <MudNavLink Match="NavLinkMatch.All" Href="/" Icon="@Icons.Material.Filled.CardGiftcard">Zaproszenia</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="@Urls.MAIN_PAGE" Icon="@Icons.Material.Filled.CardGiftcard">Zaproszenia</MudNavLink>
             <MudNavLink Match="NavLinkMatch.All" Href="/Generator" Icon="@Icons.Material.Filled.QrCode2">Generator QR Code</MudNavLink>
-            <MudNavLink Match="NavLinkMatch.All" Href="/Guests" Icon="@Icons.Material.Filled.Person">Lista gości</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="@Urls.GUESTS" Icon="@Icons.Material.Filled.Person">Lista gości</MudNavLink>
             
         </MudNavMenu>
     </MudDrawer>

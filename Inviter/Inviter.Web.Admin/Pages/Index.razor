@@ -12,17 +12,20 @@
         <MudTh>Opcje</MudTh>
     </HeaderContent>
     <RowTemplate>
-         <MudTd DataLabel="Nazwa wyświetlania">@context.DisplayName</MudTd>
-         <MudTd DataLabel="Data zaproszenia">@context.InvitationDate</MudTd>
-         <MudTd DataLabel="QRCode">
-                <MudImage Src="@context.QRCodeBase64" Width="20" />
-         </MudTd>
-         <MudTd DataLabel="Link">
-             <MudLink Href="@context.Url" Target="_blank">@context.Code</MudLink>
-         </MudTd>
-         <MudTd DataLabel="Opcje">
-             <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.Edit" Size="@Size.Small" @onclick="() => NavigateToEdit(context.Code)"/>
-             <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Remove" Size="@Size.Small" Disabled="true"/>
-         </MudTd>
+        <MudTd DataLabel="Nazwa wyświetlania">@context.DisplayName</MudTd>
+        <MudTd DataLabel="Data zaproszenia">@context.DisplayInvitationDate</MudTd>
+        <MudTd DataLabel="QRCode">
+            @if (context.QRCode is not null)
+            {
+                <MudIconButton Icon="@Icons.Material.Filled.QrCode2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" />
+            }
+        </MudTd>
+        <MudTd DataLabel="Link">
+            <MudLink Href="@context.Url" Target="_blank">@context.Code</MudLink>
+        </MudTd>
+        <MudTd DataLabel="Opcje">
+            <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.Edit" Size="@Size.Small" @onclick="() => NavigateToEdit(context.Code)" />
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="@Size.Small" Disabled="true" />
+        </MudTd>
     </RowTemplate>
 </MudTable>

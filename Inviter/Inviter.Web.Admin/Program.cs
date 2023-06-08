@@ -1,10 +1,15 @@
 using Inviter.Application.Extensions;
 using Inviter.Infrastracture.Extensions;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+//ToDo: 1. Move QRCoder to Inrastracture
+//ToDo: 2. Download zip file with pdfs
+
+
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -12,7 +17,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
 builder.Services.AddInfrastracture();
 builder.Services.AddApplication();
-
+builder.Services.AddTransient<AdminNavigationManager>();
 
 var app = builder.Build();
 

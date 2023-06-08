@@ -22,6 +22,8 @@ namespace Inviter.Web.Admin.Pages
                 await FillQrCodeData(selectedInvitation);
                 await _mediator.Send(new SaveInvitationQuery(selectedInvitation));
             }
+            //ToDo: 2.1. selectedInvitations create zip
+            //ToDo: 2.2. download
         }
 
         private async Task FillQrCodeData(Invitation selectedInvitation)

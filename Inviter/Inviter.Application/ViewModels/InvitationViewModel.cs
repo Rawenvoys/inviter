@@ -14,5 +14,6 @@ namespace Inviter.Application.ViewModels
             => Url = url;
 
         public string Url { get; set; }
+        public string DisplayInvitationDate => InvitationDate is null ? string.Empty : InvitationDate.ToString();
     }
 }

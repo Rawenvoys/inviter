@@ -1,7 +1,15 @@
 ﻿@page "/Invitation/Edit/{code:guid}"
-<h3>InvitationEdit</h3>
-<div>@Code</div>
-@code {
-    [Parameter]
-    public Guid Code { get; set; }
+
+
+@if (invitation is not null)
+{
+    <MudTextField Label="Nazwa wyświetlania" @bind-Value="invitation.DisplayName" Variant="Variant.Text"></MudTextField>
+    <MudDatePicker Label="Data zaproszenia" @bind-Date="invitation.InvitationDate" Variant="Variant.Text" AutoClose="true"></MudDatePicker>
+    <MudCheckBox T="bool" @bind-Checked="invitation.AskAboutAccompanying" Label="Zapytaj o osobę towarzyszącą"></MudCheckBox>
+    <MudCheckBox T="bool" @bind-Checked="invitation.AskForAccomodation" Label="Zapytaj o nocleg"></MudCheckBox>
+    <MudCheckBox T="bool" @bind-Checked="invitation.AskForAfterparty" Label="Zapytaj o poprawiny"></MudCheckBox>
+
 }
+
+<MudButton Variant="Variant.Filled" Color="Color.Info" OnClick="_navigationManager.MainPage">Cofnij</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="SaveInvitation">Zapisz</MudButton>
