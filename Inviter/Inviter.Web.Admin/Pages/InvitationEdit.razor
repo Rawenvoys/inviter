@@ -4,7 +4,11 @@
 @if (invitation is not null)
 {
     <MudTextField Label="Nazwa wyświetlania" @bind-Value="invitation.DisplayName" Variant="Variant.Text"></MudTextField>
-    <MudDatePicker Label="Data zaproszenia" @bind-Date="invitation.InvitationDate" Variant="Variant.Text" AutoClose="true"></MudDatePicker>
+    <MudDatePicker Label="Data zaproszenia" @bind-Date="invitation.InvitationDate" Variant="Variant.Text" DisableToolbar="true" AutoClose="true"></MudDatePicker>
+    @if (invitation.InvitationDate.HasValue)
+    {
+        <MudTimePicker Label="Godzina zaproszenia" @bind-Time="invitation.InvitationTime" Variant="Variant.Text" AutoClose="true"></MudTimePicker>
+    }
     <MudCheckBox T="bool" @bind-Checked="invitation.AskAboutAccompanying" Label="Zapytaj o osobę towarzyszącą"></MudCheckBox>
     <MudCheckBox T="bool" @bind-Checked="invitation.AskForAccomodation" Label="Zapytaj o nocleg"></MudCheckBox>
     <MudCheckBox T="bool" @bind-Checked="invitation.AskForAfterparty" Label="Zapytaj o poprawiny"></MudCheckBox>

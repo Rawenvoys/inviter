@@ -20,6 +20,7 @@ namespace Inviter.Domain.Aggregate
         public bool IsAnyGuest => Guests is not null && Guests.Count > 0;
 
         public DateTime? InvitationDate { get; set; }
+        public TimeSpan? InvitationTime { get; set; }
         public QRCodeData? QRCode { get; set; }
 
         public bool IsSelectedToGenerate { get; set; } = false;
@@ -41,6 +42,7 @@ namespace Inviter.Domain.Aggregate
             InvitationDate = invitationDate;
             QRCode = qrCode is not null ? new QRCodeData(qrCode, QRCodeData.Compression.Uncompressed) : null;
             QRCodeByteArray = qrCode;
+            InvitationTime = InvitationDate?.TimeOfDay;
         }
 
        

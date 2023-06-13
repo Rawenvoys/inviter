@@ -1,4 +1,5 @@
 ﻿using Inviter.Domain.Aggregate;
+using Inviter.Domain.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace Inviter.Infrastracture.Repositories
                                                                    , askForAccomodation = invitation.AskForAccomodation
                                                                    , askAboutAccompanying = invitation.AskAboutAccompanying
                                                                    , qrCode = invitation.QRCodeByteArray
-                                                                   , invitationDate = invitation.InvitationDate
+                                                                   , invitationDate = invitation.InvitationDate.SetTime(invitation.InvitationTime)
                                                                    },
                                                                    commandType: CommandType.StoredProcedure);
         }
