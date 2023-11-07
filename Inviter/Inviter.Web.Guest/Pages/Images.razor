@@ -1,0 +1,25 @@
+﻿@page "/Galeria"
+<PageTitle>Galeria zdjęć</PageTitle>
+
+<MudGrid>
+    @foreach (var image in @images)
+    {
+        <MudItem xs="3" Style="text-align: center;">
+            <MudCard>
+                <MudCardContent>
+                    <MudImage Src="@image.Path" ObjectPosition="ObjectPosition.Center" Class="rounded-lg" Height="200" Width="400"></MudImage>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>
+
+
+@*<MudCarousel Class="mud-width-full" ItemsSource="@images" Style="height:200px;"
+             ShowArrows="true" ShowBullets="false" EnableSwipeGesture="true" AutoCycle="false">
+    <ItemTemplate>
+        <div style="height:100%; text-align: center;">
+            <MudImage Src="@context.Path" ObjectPosition="ObjectPosition.Center" Class="rounded-lg" Height="200" Width="400"></MudImage>
+        </div>
+    </ItemTemplate>
+</MudCarousel>*@

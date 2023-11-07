@@ -1,2 +1,22 @@
 ﻿@page "/Guests"
+@page "/Guests/{code:guid}"
+@using Inviter.Domain.Aggregate
 
+<PageTitle>Lista gości</PageTitle>
+
+<MudTable Items="guests" Filter="new Func<Guest, bool>(ContainsSearchString)">
+    <ToolBarContent>
+        <MudTextField @bind-Value="searchString" Placeholder="Wyszukaj" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Imię</MudTh>
+        <MudTh>Nazwisko</MudTh>
+        <MudTh>Opcje</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Imię">@context.FirstName</MudTd>
+        <MudTd DataLabel="Nazwisko">@context.LastName</MudTd>
+        <MudTd DataLabel="Opcje">
+        </MudTd>
+    </RowTemplate>
+</MudTable>

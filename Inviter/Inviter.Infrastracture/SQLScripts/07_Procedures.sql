@@ -218,3 +218,18 @@ BEGIN
 	SELECT Id FROM @result
 END
 GO
+
+
+CREATE OR ALTER PROCEDURE SP_GuestGetAll
+AS
+BEGIN
+	SELECT 
+		g.Id
+		,g.FirstName
+		,g.LastName
+		,g.InvitationId
+		,g.IsAccompanyingPerson
+		,g.IsChild
+	FROM Guest AS g
+END
+GO

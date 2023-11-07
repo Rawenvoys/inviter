@@ -1,9 +1,13 @@
 ﻿@page "/"
+@using Inviter.Application.Resources
+@using Inviter.Application.ViewModels
 
 <PageTitle>Panel Państwa Młodych</PageTitle>
 
-
-<MudTable Items="invitations">
+<MudTable Items="invitations" Filter="new Func<InvitationViewModel,bool>(ContainsSearchString)">
+    <ToolBarContent>
+        <MudTextField @bind-Value="searchString" Placeholder="Wyszukaj" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
     <HeaderContent>
         <MudTh>Nazwa wyświetlania</MudTh>
         <MudTh>Data zaproszenia</MudTh>
@@ -21,10 +25,17 @@
             }
         </MudTd>
         <MudTd DataLabel="Link">
-            <MudLink Href="@context.Url" Target="_blank">@context.Code</MudLink>
+            <MudTooltip Text="@TooltipText.GO_TO_INVITATION">
+                <MudLink Href="@context.Url" Target="_blank">@context.Code</MudLink>
+            </MudTooltip>
         </MudTd>
         <MudTd DataLabel="Opcje">
-            <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.Edit" Size="@Size.Small" @onclick="() => NavigateToEdit(context.Code)" />
+            <MudTooltip Text="@TooltipText.EDIT_INVITATION">
+                <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.Edit" Size="@Size.Small" @onclick="() => NavigateToEdit(context.Code)" />
+            </MudTooltip>
+            <MudTooltip Text="@TooltipText.INVITATION_GUESTS">
+                <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.People" Size="@Size.Small" Disabled="true" />
+            </MudTooltip>
             <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="@Size.Small" Disabled="true" />
         </MudTd>
     </RowTemplate>

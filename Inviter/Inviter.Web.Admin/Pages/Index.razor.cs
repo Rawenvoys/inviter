@@ -14,10 +14,19 @@ namespace Inviter.Web.Admin.Pages
 
         private IList<InvitationViewModel> invitations;
 
-        protected override async Task OnInitializedAsync() 
+        private string searchString = "";
+
+        protected override async Task OnInitializedAsync()
             => invitations = await _mediator.Send(new GetInvitationsCommand());
 
-        private void NavigateToEdit(Guid code) 
+        private void NavigateToEdit(Guid code)
             => _navigationManager.InvitationEdit(code);
+
+        private bool ContainsSearchString(InvitationViewModel vm)
+        {
+            if (string.IsNullOrWhiteSpace(searchString)) return true;
+            if (vm.DisplayName.Contains(searchString, StringComparison.OrdinalIgnoreCase)) return true;
+            return false;
+        }
     }
 }

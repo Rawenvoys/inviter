@@ -11,6 +11,7 @@ namespace Inviter.Infrastracture.Extensions
             serviceCollection.AddScoped<IInvitationFinder, InvitationFinder>();
             serviceCollection.AddScoped<IGuestFinder, GuestFinder>();
             serviceCollection.AddScoped<IGuestResponseFinder, GuestResponseFinder>();
+            serviceCollection.AddScoped<IImageFinder, ImageFinder>();
         }
 
         private static void AddDapper(this IServiceCollection serviceCollection)
