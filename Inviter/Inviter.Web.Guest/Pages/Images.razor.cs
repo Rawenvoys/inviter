@@ -16,7 +16,8 @@ namespace Inviter.Web.Guest.Pages
         protected override async Task OnInitializedAsync()
             => images = await _mediator.Send(new GetImagesCommand());
 
-        private void SelectImage(long id) 
+        private void SelectImage(long id)
             => selectedImage = id;
+
     }
 }

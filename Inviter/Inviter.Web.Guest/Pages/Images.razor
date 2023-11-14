@@ -1,25 +1,17 @@
 ﻿@page "/Galeria"
+@layout InviterLayout
+
 <PageTitle>Galeria zdjęć</PageTitle>
 
-<MudGrid>
+<MudGrid Spacing="5">
     @foreach (var image in @images)
     {
-        <MudItem xs="3" Style="text-align: center;">
-            <MudCard>
-                <MudCardContent>
-                    <MudImage Src="@image.Path" ObjectPosition="ObjectPosition.Center" Class="rounded-lg" Height="200" Width="400"></MudImage>
-                </MudCardContent>
-            </MudCard>
+        <MudItem xs="12" sm="6" lg="3" Style="text-align: center;">
+            <MudImage @onclick="() => SelectImage(image.Id)" Src="@image.Path"
+                  ObjectPosition="ObjectPosition.Center"
+                  Class="rounded-lg"
+                  ObjectFit="ObjectFit.Fill">
+            </MudImage>
         </MudItem>
     }
 </MudGrid>
-
-
-@*<MudCarousel Class="mud-width-full" ItemsSource="@images" Style="height:200px;"
-             ShowArrows="true" ShowBullets="false" EnableSwipeGesture="true" AutoCycle="false">
-    <ItemTemplate>
-        <div style="height:100%; text-align: center;">
-            <MudImage Src="@context.Path" ObjectPosition="ObjectPosition.Center" Class="rounded-lg" Height="200" Width="400"></MudImage>
-        </div>
-    </ItemTemplate>
-</MudCarousel>*@
