@@ -1,16 +1,24 @@
 ﻿@page "/Galeria"
-@layout InviterLayout
+@layout GaleryLayout
 
 <PageTitle>Galeria zdjęć</PageTitle>
 
-<div class="allura">
+<div id="text-frame">
+    <div class="galery-allura">
+        <p>
+            Dziękujemy za obecność w tym ważnym dla nas dniu!
+        </p>
+    </div>
+    <div class="galery-times-new-roman">
+        <p>Zapraszamy do obejrzenia galerii zdjęć:</p>
+        <MudButton Link="@GaleryPathUrl" Variant="Variant.Filled" Style="background-color: #0f0f0f; margin-top: 20px;"
+            Color="Color.Dark" Target="_blank">Galeria</MudButton>
+    </div>
+
+</div>
+
+<div class="galery-allura" style="color: #ebd9c0" id="signature">
     <p>
-        Dziękujemy za obecność tego dnia!
+        Ania & Łukasz
     </p>
 </div>
-
-<div class="times-new-roman">
-    <p>Zapraszamy do obejrzenia galerii zdjęć:</p>
-    <MudButton Link="@GaleryPathUrl" Variant="Variant.Filled" Style="background-color: #063282; margin-top: 20px;" Color="Color.Info" Target="_blank">Galeria</MudButton>
-</div>
-
