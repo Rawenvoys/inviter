@@ -1,0 +1,65 @@
+.galery-times-new-roman {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+
+.galery-allura {
+    font-family: "Allura", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+#text-frame {
+    background-color: #ffffff4f; 
+    padding: 30px; 
+    margin: 150px 150px 50px 150px
+}
+
+
+/* */
+
+@media(max-width:699px) and (min-width:0px) {
+    #text-frame {
+        margin: 75px 75px 50px 75px;
+    }
+
+    #signature {
+        padding-top: 50px;
+    }
+}
+
+@media(max-width:799px) and (min-width:0px) {
+    .galery-allura {
+        font-size: 40px;
+    }
+
+    .galery-times-new-roman {
+        font-size: 20px;
+        padding-bottom: 30px;
+    }
+}
+
+@media(max-width:1199px) and (min-width:800px) {
+    .galery-allura {
+        font-size: 50px;
+    }
+
+    .galery-times-new-roman {
+        font-size: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+@media(min-width: 1200px) {
+    .galery-allura {
+        font-size: 60px;
+    }
+
+    .galery-times-new-roman {
+        font-size: 40px;
+        padding-bottom: 20px;
+    }
+}

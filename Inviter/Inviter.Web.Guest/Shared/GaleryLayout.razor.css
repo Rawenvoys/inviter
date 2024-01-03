@@ -1,0 +1,42 @@
+.background {
+    background-image: url(/images/Ania&_ukasz3083.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+@media(max-height:300px) and (min-height:0px) {
+    #scrollableDiv {
+        max-height: 50%;
+    }
+}
+
+@media(max-height:400px) and (min-height:300px) {
+    #scrollableDiv {
+        max-height: 65%;
+    }
+}
+
+@media(max-height:600px) and (min-height:400px) {
+    #scrollableDiv {
+        max-height: 80%;
+    }
+}
+
+@media(max-height:800px) and (min-height:600px) {
+    #scrollableDiv {
+        max-height: 87%;
+    }
+}
+
+@media(min-height: 800px) {
+    #scrollableDiv {
+        max-height: 91%;
+    }
+}
+
+/*#scrollableDiv::-webkit-scrollbar {
+    display: none;
+}*/
