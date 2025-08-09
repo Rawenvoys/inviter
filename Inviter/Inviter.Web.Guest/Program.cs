@@ -1,5 +1,6 @@
 
 using Inviter.Application.Extensions;
+using Inviter.Application.Models;
 using Inviter.Infrastracture.Extensions;
 using MudBlazor.Services;
 
@@ -11,6 +12,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
 builder.Services.AddInfrastracture();
 builder.Services.AddApplication();
+builder.Services.Configure<GuestAppSettings>(builder.Configuration.GetSection(GuestAppSettings.SecionName));
 
 var app = builder.Build();
 

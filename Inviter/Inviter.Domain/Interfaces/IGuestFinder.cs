@@ -6,5 +6,6 @@ namespace Inviter.Domain.Interfaces
     public interface IGuestFinder
     {
         Task<IList<Guest>?> GetGuestsForInvitation(Code code);
+        Task<IList<Guest>> GetAll();
     }
 }

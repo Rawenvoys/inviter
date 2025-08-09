@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Inviter.Domain.Interfaces
 {
-    //ToDo: Think about method per property
     public interface IInvitationRepository
     {
-        Task Edit(Invitation invitation);
+        Task<Guid> Save(Invitation invitation);
     }
 }

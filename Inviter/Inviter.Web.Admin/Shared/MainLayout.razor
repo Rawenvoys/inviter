@@ -1,19 +1,29 @@
-﻿@inherits LayoutComponentBase
+﻿@using Inviter.Web.Admin.Consts
+@inherits LayoutComponentBase
 
-<PageTitle>Inviter.Web.Admin</PageTitle>
+<PageTitle>Panel Państwa Młodych</PageTitle>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+<MudLayout>
+    <MudDrawer Elevation="1" Variant="@DrawerVariant.Responsive" Open="true">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Inviter</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudNavLink Match="NavLinkMatch.All" Href="@Urls.MAIN_PAGE" Icon="@Icons.Material.Filled.CardGiftcard">Zaproszenia</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/Generator" Icon="@Icons.Material.Filled.QrCode2">Generator QR Code</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="@Urls.GUESTS" Icon="@Icons.Material.Filled.Person">Lista gości</MudNavLink>
+            
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent Class="pt-16 px-16">
+        <MudContainer Class="mt-6">
             @Body
-        </article>
-    </main>
-</div>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+

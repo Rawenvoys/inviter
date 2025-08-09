@@ -1,9 +1,42 @@
 ﻿@page "/"
+@using Inviter.Application.Resources
+@using Inviter.Application.ViewModels
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Panel Państwa Młodych</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<MudTable Items="invitations" Filter="new Func<InvitationViewModel,bool>(ContainsSearchString)">
+    <ToolBarContent>
+        <MudTextField @bind-Value="searchString" Placeholder="Wyszukaj" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Nazwa wyświetlania</MudTh>
+        <MudTh>Data zaproszenia</MudTh>
+        <MudTh>QRCode</MudTh>
+        <MudTh>Link</MudTh>
+        <MudTh>Opcje</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nazwa wyświetlania">@context.DisplayName</MudTd>
+        <MudTd DataLabel="Data zaproszenia">@context.DisplayInvitationDate</MudTd>
+        <MudTd DataLabel="QRCode">
+            @if (context.QRCode is not null)
+            {
+                <MudIconButton Icon="@Icons.Material.Filled.QrCode2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" />
+            }
+        </MudTd>
+        <MudTd DataLabel="Link">
+            <MudTooltip Text="@TooltipText.GO_TO_INVITATION">
+                <MudLink Href="@context.Url" Target="_blank">@context.Code</MudLink>
+            </MudTooltip>
+        </MudTd>
+        <MudTd DataLabel="Opcje">
+            <MudTooltip Text="@TooltipText.EDIT_INVITATION">
+                <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.Edit" Size="@Size.Small" @onclick="() => NavigateToEdit(context.Code)" />
+            </MudTooltip>
+            <MudTooltip Text="@TooltipText.INVITATION_GUESTS">
+                <MudFab Color="Color.Info" StartIcon="@Icons.Material.Filled.People" Size="@Size.Small" Disabled="true" />
+            </MudTooltip>
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" Size="@Size.Small" Disabled="true" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>

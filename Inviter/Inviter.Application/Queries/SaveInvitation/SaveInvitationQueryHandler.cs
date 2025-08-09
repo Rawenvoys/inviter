@@ -1,16 +1,18 @@
 ﻿namespace Inviter.Application.Queries.SaveInvitation
 {
-    public class SaveInvitationCommandHandler : IRequestHandler<SaveInvitationCommand, bool>
+    public class SaveInvitationQueryHandler : IRequestHandler<SaveInvitationQuery, bool>
     {
         private readonly IGuestRepository _guestRepository;
         private readonly IGuestResponseRepository _guestResponseRepository;
+        private readonly IInvitationRepository _invitationRepository;
 
-        public SaveInvitationCommandHandler(IGuestRepository guestRepository, IGuestResponseRepository guestResponseRepository)
+        public SaveInvitationQueryHandler(IGuestRepository guestRepository, IGuestResponseRepository guestResponseRepository, IInvitationRepository invitationRepository)
         {
             _guestRepository = guestRepository;
             _guestResponseRepository = guestResponseRepository;
+            _invitationRepository = invitationRepository;
         }
-        public async Task<bool> Handle(SaveInvitationCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(SaveInvitationQuery request, CancellationToken cancellationToken)
         {
             if (request.Invitation.WillTakeAccompanyingPerson)
             {
@@ -29,6 +31,8 @@
                 guest.Response.GuestId = guestId;
                 await _guestResponseRepository.Save(guest.Response);
             }
+
+            await _invitationRepository.Save(request.Invitation);
 
             return true;
         }

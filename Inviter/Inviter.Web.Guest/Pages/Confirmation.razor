@@ -15,19 +15,20 @@ else
                 <MudExpansionPanel Text="@guest.FullName" IsInitiallyExpanded="true">
                     <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtWeddingPartyCb" Style="text-align: left;" Label="Będę na weselu"></MudCheckBox>
 
-                    @if (invitation.AskForAfterparty && guest.Response.WillBeAtWeddingParty)
+                    @if (guest.Response.WillBeAtWeddingParty)
                     {
                         @if (invitation.AskAboutAccompanying)
                         {
                             <MudCheckBox T="bool" @bind-Checked="@invitation.WillTakeAccompanyingPerson" Style="text-align: left;" Label="Zabieram osobę towarzyszącą"></MudCheckBox>
                         }
-
-
                         @if (invitation.AskForAccomodation)
                         {
                             <MudCheckBox T="bool" @bind-Checked="@guest.Response.NeedAccomodationCb" Style="text-align: left;" Label="Potrzebuję noclegu"></MudCheckBox>
                         }
-                        <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtAfterpartyCb" Style="text-align: left;" Label="Będę na poprawinach"></MudCheckBox>
+                        @if (invitation.AskForAfterparty)
+                        {
+                            <MudCheckBox T="bool" @bind-Checked="@guest.Response.WillBeAtAfterpartyCb" Style="text-align: left;" Label="Będę na poprawinach"></MudCheckBox>
+                        }
                     }
                 </MudExpansionPanel>
             }

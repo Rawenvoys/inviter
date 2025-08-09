@@ -20,6 +20,21 @@ namespace Inviter.Infrastracture.Finders
             _guestResponseFinder = guestResponseFinder;
         }
 
+        public async Task<IList<Guest>?> GetAll()
+        {
+            using var connection = _inviterContext.CreateConnection();
+            var guests = await connection.QueryAsync<GuestDto>("SP_GuestGetAll", commandType: CommandType.StoredProcedure);
+            if (guests is null) return null;
+
+            IList<Guest> result = new List<Guest>();
+            foreach (var guest in guests)
+            {
+                var response = await _guestResponseFinder.Get(guest.Id);
+                result.Add(new(guest.Id, guest.InvitationId, guest.FirstName, guest.LastName, guest.IsAccompanyingPerson, guest.IsChild, response));
+            }
+            return result;
+        }
+
         public async Task<IList<Guest>?> GetGuestsForInvitation(Code code)
         {
             using var connection = _inviterContext.CreateConnection();

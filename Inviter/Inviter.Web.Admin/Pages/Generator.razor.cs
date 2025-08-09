@@ -1,0 +1,45 @@
+﻿using Inviter.Application.Commands.GenerateQRCode;
+using Inviter.Application.Commands.GetInvitationsWithoutQRCode;
+using Inviter.Application.Commands.GetQRCodeBase64;
+using Inviter.Application.Queries.SaveInvitation;
+using Inviter.Domain.Aggregate;
+using Microsoft.AspNetCore.Components;
+using QRCoder;
+
+namespace Inviter.Web.Admin.Pages
+{
+    public partial class Generator
+    {
+        [Inject]
+        public IMediator _mediator { get; set; }
+        private IList<Invitation> invitations;
+
+        private async Task GenerateQRCode()
+        {
+            var selectedInvitations = invitations.Where(i => i.IsSelectedToGenerate);
+            foreach (var selectedInvitation in selectedInvitations)
+            {
+                await FillQrCodeData(selectedInvitation);
+                await _mediator.Send(new SaveInvitationQuery(selectedInvitation));
+            }
+            //ToDo: 2.1. selectedInvitations create zip
+            //ToDo: 2.2. download
+        }
+
+        private async Task FillQrCodeData(Invitation selectedInvitation)
+        {
+            var qrCode = await _mediator.Send(new GenerateQRCodeCommand()
+            {
+                Code = selectedInvitation.Code.ToString().ToUpper()
+            });
+            selectedInvitation.QRCode = qrCode;
+            selectedInvitation.QRCodeBase64 = await _mediator.Send(new GetQRCodeBase64Command()
+            {
+                QRCode = qrCode
+            });
+            selectedInvitation.QRCodeByteArray = qrCode.GetRawData(QRCodeData.Compression.Uncompressed);
+        }
+
+        protected override async Task OnInitializedAsync() => invitations = await _mediator.Send(new GetInvitationsWithoutQRCodeCommand());
+    }
+}
